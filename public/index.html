@@ -131,6 +131,22 @@ footer a{color:var(--text);margin:0 8px}
 </head>
 <body>
 
+/* Readability fix: lighter weights */
+body, body p, body li, body span, body div, body a, body input, body textarea, body button {
+  font-weight: 400 !important;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+h1, h2, h3, h4 {
+  font-weight: 700 !important;  /* try 600 if still too heavy */
+}
+strong, b, .btn, button {
+  font-weight: 600 !important;
+}
+body {
+  color: #e8e2d9;  /* softer than pure white on black */
+  -webkit-font-smoothing: antialiased;
+}
 <nav>
   <div class="wrap">
     <a class="logo" href="#top">AFTER THE <b>BARS</b></a>
