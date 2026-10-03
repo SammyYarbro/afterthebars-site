@@ -1,5 +1,4 @@
-﻿@'
-{
+﻿{
   "name": "afterthebars-site",
   "main": "src/worker.js",
   "compatibility_date": "2026-10-01",
@@ -14,4 +13,3 @@
     "YT_CHANNEL_ID": "UCFbE2QM1Xp4iJ_q3lTpsQxg"
   }
 }
-'@ | Set-Content -Encoding utf8 wrangler.jsonc
