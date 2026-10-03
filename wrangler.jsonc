@@ -1,14 +1,7 @@
 {
-  "name": "afterthebars-site.livewireintelapps.workers.dev",
+  "name": ""name": "afterthebars-site",v",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./public"
   }
-}
-{
-  // ...
-  "observability": {
-    "enabled": false
-  },
-  // ...
 }
