@@ -2,392 +2,501 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>After the Bars — The Morning Mayhem Show</title>
-<meta name="description" content="Recovery, true crime, tattoos and faith. Watch, join the community, and count your days.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>After the Bars: The Morning Mayhem Show</title>
+<meta name="description" content="Recovery, true crime, tattoos and faith. Watch the show, track your sober days, and join the community.">
+<meta name="theme-color" content="#050505">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root{
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#0a0a0b; --panel:#141416; --panel2:#1c1c1f; --line:#2a2a2e;
-  --text:#ece7df; --muted:#9b958b; --red:#d62828; --red2:#8f1414; --ember:#ff6a2b;
-  --display:Impact,"Arial Narrow Bold","Haettenschweiler",sans-serif;
-  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.55;
-  background-image:radial-gradient(ellipse at 50% -10%,rgba(214,40,40,.18),transparent 55%)}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--display);text-transform:uppercase;letter-spacing:.03em;line-height:1.02;margin:0}
-.spikes{height:14px;background:
-  linear-gradient(135deg,var(--bg) 25%,transparent 25%) -7px 0/14px 14px,
-  linear-gradient(225deg,var(--bg) 25%,transparent 25%) -7px 0/14px 14px;
-  background-color:var(--red)}
-.spikes.flip{transform:scaleY(-1)}
+  /* ============================================================
+     EDIT THESE: links, schedule, and contact in the CONFIG block
+     at the bottom of the page (search for "CONFIG").
+     ============================================================ */
 
-/* nav */
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(10,10,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-.logo{font-family:var(--display);font-size:20px;letter-spacing:.06em}
-.logo b{color:var(--red)}
-.links{display:flex;gap:18px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);overflow-x:auto}
-.links a:hover{color:var(--text)}
-@media(max-width:640px){.links a:nth-child(n+4){display:none}}
+  :root {
+    --black: #050505;
+    --coal: #121010;
+    --line: #2b2626;
+    --blood: #c8102e;
+    --blood-hot: #e5334b;
+    --bone: #ece6da;
+    --ash: #aaa299;
 
-/* hero */
-.hero{padding:64px 0 56px;text-align:center}
-.eyebrow{color:var(--ember);font-size:12px;letter-spacing:.3em;text-transform:uppercase;font-weight:700}
-.hero h1{font-size:clamp(44px,12vw,112px);margin:14px 0 6px}
-.hero h1 span{display:block}
-.hero h1 .m{color:var(--red);text-shadow:0 0 40px rgba(214,40,40,.45)}
-.hero p{max-width:560px;margin:18px auto 28px;color:var(--muted);font-size:17px}
-.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 24px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:13px;border:2px solid var(--red);cursor:pointer;background:var(--red);color:#fff;font-family:inherit;transition:.15s}
-.btn:hover{background:var(--red2);border-color:var(--red2)}
-.btn.ghost{background:transparent;color:var(--text)}
-.btn.ghost:hover{background:var(--red);}
+    --display: 'Pirata One', 'Georgia', serif;
+    --body: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
 
-section{padding:56px 0}
-.sec-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:24px;flex-wrap:wrap}
-.sec-head h2{font-size:clamp(30px,6vw,46px)}
-.sec-head h2::after{content:"";display:block;width:60px;height:4px;background:var(--red);margin-top:10px}
-.sec-head small{color:var(--muted)}
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
 
-/* videos */
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-.card{background:var(--panel);border:1px solid var(--line);overflow:hidden;transition:.2s;display:block}
-.card:hover{transform:translateY(-3px);border-color:var(--red)}
-.thumb{aspect-ratio:16/9;background:linear-gradient(135deg,#1d1d20,#0e0e10);position:relative;display:flex;align-items:center;justify-content:center}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb .play{position:absolute;width:54px;height:54px;border-radius:50%;background:rgba(214,40,40,.92);display:flex;align-items:center;justify-content:center;opacity:.9}
-.thumb .play::after{content:"";border-left:16px solid #fff;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
-.thumb .ph{font-family:var(--display);color:#333;font-size:26px;letter-spacing:.1em}
-.card .info{padding:14px 16px 16px}
-.card h3{font-size:19px;margin-bottom:6px}
-.card .meta{color:var(--muted);font-size:13px}
-.badge{display:inline-block;background:var(--ember);color:#000;font-size:11px;font-weight:800;letter-spacing:.1em;padding:3px 8px;text-transform:uppercase;margin-bottom:8px}
-.badge.live{background:var(--red);color:#fff}
-.featured{display:grid;gap:0;grid-template-columns:1.5fr 1fr;border:1px solid var(--line);background:var(--panel);margin-bottom:22px}
-@media(max-width:760px){.featured{grid-template-columns:1fr}}
-.featured .thumb{height:100%;min-height:220px}
-.featured .info{padding:24px}
-.featured h3{font-size:30px;margin-bottom:10px}
-.player{display:none;aspect-ratio:16/9;width:100%;border:0}
-.note{color:var(--muted);font-size:13px;margin-top:14px}
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--bone);
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 1.0625rem;      /* 17px */
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-/* schedule */
-.sched{background:var(--panel);border:1px solid var(--line)}
-.row{display:flex;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
-.row:last-child{border:0}
-.date{min-width:64px;text-align:center;font-family:var(--display);line-height:1}
-.date b{display:block;font-size:30px;color:var(--red)}
-.date span{font-size:12px;letter-spacing:.15em;color:var(--muted)}
-.row h3{font-size:18px}
-.row p{margin:2px 0 0;color:var(--muted);font-size:14px}
-.row .when{margin-left:auto;font-size:13px;color:var(--ember);white-space:nowrap}
-.bell{margin-left:12px}
-@media(max-width:560px){.row{flex-wrap:wrap}.row .when{margin-left:80px}}
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  p { margin: 0 0 1em; max-width: 62ch; }
 
-/* counter */
-.counter{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);padding:32px;display:grid;gap:28px;grid-template-columns:1fr 1fr}
-@media(max-width:760px){.counter{grid-template-columns:1fr;padding:22px}}
-.counter label{display:block;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-input[type=date]{background:#0d0d0f;color:var(--text);border:1px solid var(--line);padding:12px;font-size:16px;width:100%;font-family:inherit;color-scheme:dark}
-.big{font-family:var(--display);font-size:clamp(64px,16vw,110px);color:var(--red);line-height:.9}
-.big small{display:block;font-size:14px;letter-spacing:.3em;color:var(--muted);font-family:var(--body);margin-top:6px}
-.miles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
-.mile{border:1px solid var(--line);padding:10px 6px;text-align:center;font-size:12px;color:var(--muted);background:#0d0d0f}
-.mile b{display:block;font-family:var(--display);font-size:20px;color:var(--text)}
-.mile.on{border-color:var(--red);background:rgba(214,40,40,.12);color:var(--text)}
-.mile.on::after{content:"FLASH UNLOCKED";display:block;font-size:9px;letter-spacing:.12em;color:var(--ember);margin-top:3px}
-.bar{height:8px;background:#0d0d0f;border:1px solid var(--line);margin:16px 0 6px}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--red2),var(--ember));width:0;transition:width .6s}
+  :focus-visible {
+    outline: 3px solid var(--bone);
+    outline-offset: 3px;
+  }
 
-/* tiers */
-.tiers{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.tier{background:var(--panel);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column}
-.tier.hot{border-color:var(--red);box-shadow:0 0 0 1px var(--red),0 10px 40px rgba(214,40,40,.15)}
-.tier h3{font-size:28px;margin-bottom:4px}
-.tier .price{color:var(--ember);font-weight:800;margin-bottom:14px}
-.tier ul{padding:0;margin:0 0 22px;list-style:none;flex:1}
-.tier li{padding:7px 0 7px 22px;position:relative;border-bottom:1px dashed var(--line);font-size:15px}
-.tier li::before{content:"✦";position:absolute;left:0;color:var(--red)}
-.tier .btn{text-align:center}
+  .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
 
-.merch{text-align:center;border:2px dashed var(--line);padding:48px 20px;background:var(--panel)}
-.merch h2{font-size:40px}
-.merch p{color:var(--muted);max-width:480px;margin:10px auto 20px}
-.mail{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.mail input{padding:13px;background:#0d0d0f;border:1px solid var(--line);color:var(--text);min-width:240px;font-size:16px;font-family:inherit}
+  /* ---------- Headings ---------- */
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; margin: 0 0 .5em; }
+  h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+  h3 { font-size: 1.7rem; }
 
-.verse{text-align:center;color:var(--muted);font-style:italic;padding:40px 20px 10px;max-width:640px;margin:0 auto}
-footer{padding:30px 0 50px;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line);margin-top:30px}
-footer a{color:var(--text);margin:0 8px}
-.help{font-size:13px;color:var(--muted);margin-top:14px}
+  /* ---------- Spike divider (the one loud element) ---------- */
+  .spikes {
+    height: 22px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='22' viewBox='0 0 28 22'%3E%3Cpath d='M0 0 L14 22 L28 0 Z' fill='%23c8102e'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center top;
+  }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(5,5,5,.94);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; padding-block: .7rem;
+  }
+  .brand { font-family: var(--display); font-size: 1.6rem; text-decoration: none; letter-spacing: .02em; }
+  nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+  nav a { text-decoration: none; font-weight: 500; color: var(--ash); padding: .3rem 0; border-bottom: 2px solid transparent; }
+  nav a:hover { color: var(--bone); border-color: var(--blood); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(3rem, 7vw, 5rem); }
+  .hero h1 {
+    font-size: clamp(3.6rem, 13vw, 9.5rem);
+    letter-spacing: .01em;
+    margin-bottom: .1em;
+    animation: rise .9s ease-out both;
+  }
+  .hero h1 span { display: block; color: var(--blood); font-size: .5em; letter-spacing: .06em; }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  .hero .lede { font-size: 1.25rem; color: var(--bone); max-width: 46ch; margin-bottom: 1.8rem; }
+  .hero .lede em { color: var(--ash); font-style: normal; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-block; text-decoration: none; cursor: pointer;
+    font-family: var(--body); font-weight: 600; font-size: 1rem;
+    padding: .8rem 1.4rem; border: 2px solid var(--blood);
+    background: var(--blood); color: #fff; border-radius: 2px;
+    transition: background .15s, border-color .15s;
+  }
+  .btn:hover { background: var(--blood-hot); border-color: var(--blood-hot); }
+  .btn.ghost { background: transparent; color: var(--bone); border-color: var(--bone); }
+  .btn.ghost:hover { background: var(--bone); color: var(--black); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: .8rem; }
+
+  /* ---------- Sections ---------- */
+  section { padding: clamp(3rem, 7vw, 5rem) 0; }
+  section.alt { background: var(--coal); border-block: 1px solid var(--line); }
+  .section-intro { color: var(--ash); margin-bottom: 2rem; }
+
+  /* ---------- Videos ---------- */
+  .video-grid {
+    display: grid; gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  .video a { text-decoration: none; display: block; }
+  .thumb {
+    aspect-ratio: 16 / 9; background: var(--line); overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .25s; }
+  .video a:hover .thumb img { transform: scale(1.03); }
+  .video a:hover .vtitle { color: var(--blood-hot); }
+  .vtitle { font-weight: 600; margin: .7rem 0 .1rem; line-height: 1.35; }
+  .vdate { color: var(--ash); font-size: .92rem; }
+  .status { color: var(--ash); padding: 1rem 0; }
+  .status a { color: var(--bone); }
+
+  /* ---------- Schedule ---------- */
+  .schedule { list-style: none; padding: 0; margin: 0; max-width: 720px; }
+  .schedule li {
+    display: grid; grid-template-columns: 9rem 1fr; gap: 1rem;
+    padding: 1rem 0; border-bottom: 1px solid var(--line);
+  }
+  .schedule .when { font-weight: 600; color: var(--blood-hot); }
+  .schedule .what strong { font-weight: 600; display: block; }
+  .schedule .what span { color: var(--ash); }
+  @media (max-width: 520px) { .schedule li { grid-template-columns: 1fr; gap: .2rem; } }
+
+  /* ---------- Sobriety counter ---------- */
+  .counter-box {
+    border: 2px solid var(--blood); padding: clamp(1.4rem, 4vw, 2.4rem);
+    max-width: 760px; background: var(--black);
+  }
+  .days { font-family: var(--display); font-size: clamp(5rem, 18vw, 9rem); line-height: .9; color: var(--bone); }
+  .days small { font-family: var(--body); font-size: 1.1rem; color: var(--ash); letter-spacing: .02em; margin-left: .5rem; }
+  .counter-msg { margin: .8rem 0 1.4rem; color: var(--bone); }
+  .date-row { display: flex; flex-wrap: wrap; gap: .7rem; align-items: end; }
+  label { display: block; font-weight: 500; color: var(--ash); margin-bottom: .3rem; font-size: .95rem; }
+  input[type="date"], input[type="email"] {
+    font: inherit; font-size: 1rem; color: var(--bone);
+    background: var(--coal); border: 1px solid #4a4242; padding: .7rem .8rem;
+    border-radius: 2px; min-width: 14rem; color-scheme: dark;
+  }
+  .reset { background: none; border: 0; color: var(--ash); font: inherit; text-decoration: underline; cursor: pointer; padding: .7rem .2rem; }
+  .reset:hover { color: var(--bone); }
+
+  .rail { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: .6rem;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); max-width: 760px; }
+  .rail li {
+    border: 1px solid var(--line); padding: .8rem 1rem; background: var(--black);
+  }
+  .rail .mark { font-family: var(--display); font-size: 1.8rem; line-height: 1; }
+  .rail .state { font-size: .92rem; color: var(--ash); }
+  .rail li.done { border-color: var(--blood); }
+  .rail li.done .state { color: var(--bone); }
+  .rail li.done .state::before { content: "Unlocked: "; color: var(--blood-hot); font-weight: 600; }
+  .note { color: var(--ash); font-size: .95rem; margin-top: 1rem; }
+
+  /* ---------- Membership ---------- */
+  .tiers { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .tier { border: 1px solid var(--line); padding: 1.6rem; background: var(--coal); display: flex; flex-direction: column; }
+  section.alt .tier { background: var(--black); }
+  .tier.featured { border: 2px solid var(--blood); }
+  .tier .price { color: var(--blood-hot); font-weight: 600; margin-bottom: 1rem; }
+  .tier ul { margin: 0 0 1.5rem; padding-left: 1.1rem; flex: 1; }
+  .tier li { margin-bottom: .45rem; }
+  .tier .btn { align-self: flex-start; }
+
+  /* ---------- Merch waitlist ---------- */
+  .waitlist { display: flex; flex-wrap: wrap; gap: .8rem; align-items: end; }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 2.5rem 0 3rem; color: var(--ash); font-size: .95rem; }
+  footer p { max-width: 70ch; }
+  footer a { color: var(--bone); }
+  .links { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 1.4rem; }
+
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
 </head>
 <body>
 
-/* Readability fix: lighter weights */
-body, body p, body li, body span, body div, body a, body input, body textarea, body button {
-  font-weight: 400 !important;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
-}
-h1, h2, h3, h4 {
-  font-weight: 700 !important;  /* try 600 if still too heavy */
-}
-strong, b, .btn, button {
-  font-weight: 600 !important;
-}
-body {
-  color: #e8e2d9;  /* softer than pure white on black */
-  -webkit-font-smoothing: antialiased;
-}
-<nav>
+<header class="site-header">
   <div class="wrap">
-    <a class="logo" href="#top">AFTER THE <b>BARS</b></a>
-    <div class="links">
-      <a href="#watch">Watch</a><a href="#schedule">Schedule</a><a href="#days">Count Days</a><a href="#join">Join</a><a href="#merch">Merch</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="eyebrow">The Morning Mayhem Show</div>
-    <h1><span>After the</span><span class="m">Bars</span><span>After Dark</span></h1>
-    <p>Recovery. True crime. Ink. Faith. Raw honesty, a little humor, and a community that shows up for each other.</p>
-    <div class="btns">
-      <a class="btn" href="#watch">Watch Latest</a>
-      <a class="btn ghost" href="#join">Join the Brotherhood</a>
-    </div>
+    <a class="brand" href="#top">After the Bars</a>
+    <nav aria-label="Main">
+      <a href="#watch">Watch</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#counter">Sober days</a>
+      <a href="#join">Join</a>
+    </nav>
   </div>
 </header>
-<div class="spikes"></div>
 
-<section id="watch">
-  <div class="wrap">
-    <div class="sec-head"><h2>Latest Drops</h2><small id="feedStatus"></small></div>
-    <div class="featured" id="featured"></div>
-    <div class="grid" id="videoGrid"></div>
-    <p class="note">Videos pull automatically from the YouTube channel. Upload or publish and it shows up here, thumbnail included.</p>
+<main id="top">
+
+  <div class="hero">
+    <div class="wrap">
+      <h1>After the Bars<span>The Morning Mayhem Show</span></h1>
+      <p class="lede">Recovery, true crime, tattoos and faith. Raw, honest, and a little loud. <em>Straight from Billings, Montana.</em></p>
+      <div class="btn-row">
+        <a class="btn" href="#watch">Watch the latest</a>
+        <a class="btn ghost" href="#counter">Start your sober-day counter</a>
+      </div>
+    </div>
   </div>
-</section>
+  <div class="spikes" aria-hidden="true"></div>
 
-<section id="schedule" style="background:#0d0d0f">
-  <div class="wrap">
-    <div class="sec-head"><h2>Coming Up</h2><small>Premieres &amp; live streams</small></div>
-    <div class="sched" id="sched"></div>
-    <p class="note">Tap the bell to get a push alert on your phone when we go live (install the After the Bars app first).</p>
-  </div>
-</section>
+  <!-- WATCH -->
+  <section id="watch">
+    <div class="wrap">
+      <h2>Latest episodes</h2>
+      <p class="section-intro">New videos show up here on their own when they go live on YouTube.</p>
+      <div id="videos" class="video-grid" aria-live="polite"></div>
+      <p id="video-status" class="status">Loading videos...</p>
+    </div>
+  </section>
 
-<section id="days">
-  <div class="wrap">
-    <div class="sec-head"><h2>Count Your Days</h2><small>Free forever</small></div>
-    <div class="counter">
-      <div>
-        <label for="sobDate">My sobriety date</label>
-        <input type="date" id="sobDate">
-        <div class="help">Stays on your device only. Nothing is sent to us.</div>
-        <div style="margin-top:26px">
-          <div class="big"><span id="dayNum">0</span><small>DAYS CLEAN</small></div>
-          <div class="bar"><i id="barFill"></i></div>
-          <div class="help" id="nextMile">Set your date to start counting.</div>
+  <!-- SCHEDULE -->
+  <section id="schedule" class="alt">
+    <div class="wrap">
+      <h2>Upcoming</h2>
+      <p class="section-intro">Times are Mountain Time.</p>
+      <ul id="schedule-list" class="schedule"></ul>
+    </div>
+  </section>
+
+  <!-- COUNTER -->
+  <section id="counter">
+    <div class="wrap">
+      <h2>Count your days</h2>
+      <p class="section-intro">Free, private, and it stays free. Your date is saved only in this browser.</p>
+
+      <div class="counter-box">
+        <div class="days"><span id="day-count">0</span><small>days sober</small></div>
+        <p id="counter-msg" class="counter-msg">Pick your sobriety date to start counting.</p>
+        <div class="date-row">
+          <div>
+            <label for="sober-date">Sobriety date</label>
+            <input type="date" id="sober-date">
+          </div>
+          <button class="btn" id="save-date" type="button">Save date</button>
+          <button class="reset" id="clear-date" type="button">Clear</button>
         </div>
       </div>
-      <div>
-        <label>Milestone tattoo flash</label>
-        <div class="miles" id="miles"></div>
-        <div class="help">Hit a milestone, unlock a flash design drawn by Sam. Download and get it inked. Full unlocks live in the app.</div>
-        <div class="btns" style="justify-content:flex-start;margin-top:18px">
-          <a class="btn" href="#join">Get the App</a>
+
+      <ul class="rail" id="rail" aria-label="Milestones"></ul>
+      <p class="note">Each milestone unlocks a tattoo flash design drawn by Sam. Download them in the <a href="#join">After the Bars app</a>.</p>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join" class="alt">
+    <div class="wrap">
+      <h2>Ways to join</h2>
+      <p class="section-intro">The counter and the show are free. Everything else is optional support.</p>
+
+      <div class="tiers">
+        <article class="tier">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul>
+            <li>Every public episode</li>
+            <li>Sober-day counter and milestones</li>
+            <li>Show schedule</li>
+          </ul>
+          <a class="btn ghost" href="#watch">Start watching</a>
+        </article>
+
+        <article class="tier featured">
+          <h3>Patreon</h3>
+          <div class="price">Support the show</div>
+          <ul>
+            <li>Members-only posts and early looks</li>
+            <li>Montana file room: true crime case documents (coming)</li>
+            <li>Helps keep the show independent</li>
+          </ul>
+          <a class="btn" id="patreon-link" href="#" target="_blank" rel="noopener">Join on Patreon</a>
+        </article>
+
+        <article class="tier">
+          <h3>The app</h3>
+          <div class="price">Free</div>
+          <ul>
+            <li>Install it on your phone's home screen</li>
+            <li>Alerts when the show goes live</li>
+            <li>Tattoo flash downloads at each milestone</li>
+          </ul>
+          <a class="btn ghost" id="app-link" href="#" target="_blank" rel="noopener">Get the app</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MERCH -->
+  <section id="merch">
+    <div class="wrap">
+      <h2>Merch is coming</h2>
+      <p class="section-intro">Leave your email and you'll hear first when it drops. No spam.</p>
+      <form id="waitlist" class="waitlist">
+        <div>
+          <label for="wl-email">Email address</label>
+          <input type="email" id="wl-email" name="email" autocomplete="email" required placeholder="you@example.com">
         </div>
-      </div>
+        <button class="btn" type="submit">Join the waitlist</button>
+      </form>
+      <p id="wl-msg" class="note" role="status"></p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="join" style="background:#0d0d0f">
-  <div class="wrap">
-    <div class="sec-head"><h2>Pick Your Seat</h2><small>Nobody walks alone</small></div>
-    <div class="tiers">
-      <div class="tier">
-        <h3>Community</h3><div class="price">FREE</div>
-        <ul>
-          <li>Every video, first</li>
-          <li>Sobriety day counter</li>
-          <li>Show schedule &amp; alerts</li>
-          <li>Comment-section brotherhood</li>
-        </ul>
-        <a class="btn ghost" href="https://www.youtube.com/" target="_blank" rel="noopener">Subscribe on YouTube</a>
-      </div>
-      <div class="tier hot">
-        <h3>Inner Circle</h3><div class="price">MEMBERS · via Patreon</div>
-        <ul>
-          <li>Montana file room: true-crime case documents</li>
-          <li>Early &amp; extended episodes</li>
-          <li>Members-only live hangouts &amp; Q&amp;A</li>
-          <li>Full flash vault &amp; behind-the-ink</li>
-          <li>Recovery check-in thread</li>
-        </ul>
-        <a class="btn" href="https://www.patreon.com/" target="_blank" rel="noopener">Become a Member</a>
-      </div>
-      <div class="tier">
-        <h3>The App</h3><div class="price">INSTALL · FREE</div>
-        <ul>
-          <li>Sobriety streaks &amp; check-ins</li>
-          <li>Milestone flash unlocks</li>
-          <li>Go-live push notifications</li>
-          <li>Works on any phone, no app store</li>
-        </ul>
-        <a class="btn ghost" href="https://afterthebars.faith" target="_blank" rel="noopener">Open the App</a>
-      </div>
-    </div>
-  </div>
-</section>
+</main>
 
-<section id="merch">
-  <div class="wrap">
-    <div class="merch">
-      <h2>Merch Drops Soon</h2>
-      <p>Tees, patches and ink-inspired gear. Get first dibs before it hits the shelf.</p>
-      <div class="mail">
-        <input type="email" id="mailIn" placeholder="your@email.com" aria-label="Email">
-        <button class="btn" id="mailBtn">Notify Me</button>
-      </div>
-      <div class="help" id="mailMsg"></div>
-    </div>
-  </div>
-</section>
-
-<div class="verse">"Bear one another's burdens, and so fulfill the law of Christ." — Galatians 6:2</div>
-
-<div class="spikes flip" style="margin-top:30px"></div>
+<div class="spikes" aria-hidden="true"></div>
 <footer>
   <div class="wrap">
-    <div><a href="#watch">Watch</a><a href="#days">Count Days</a><a href="#join">Join</a></div>
-    <p>If you or someone you love is struggling, call or text 988 or reach out to a trusted friend today. You are not alone.</p>
-    <p>© After the Bars · Billings, Montana</p>
+    <div class="links">
+      <a id="yt-link" href="#" target="_blank" rel="noopener">YouTube channel</a>
+      <a id="patreon-link-2" href="#" target="_blank" rel="noopener">Patreon</a>
+      <a id="app-link-2" href="#" target="_blank" rel="noopener">App</a>
+    </div>
+    <p>If you or someone you love is struggling with substance use, the SAMHSA National Helpline is free, confidential, and open 24/7 at 1-800-662-4357.</p>
+    <p>After the Bars: The Morning Mayhem Show. Billings, Montana.</p>
   </div>
 </footer>
 
 <script>
-/* ============ CONFIG: edit these ============ */
-var CONFIG = {
-  channelHandle: "https://www.youtube.com/",   // your channel URL
-  feedEndpoint: "/api/videos"                  // Cloudflare Pages Function (see setup notes)
+/* ============================================================
+   CONFIG: change these and nothing else needs touching
+   ============================================================ */
+const CONFIG = {
+  youtubeChannelUrl: "https://www.youtube.com/@AfterTheBars",     // your channel link
+  patreonUrl:        "https://www.patreon.com/",     // your Patreon page
+  appUrl:            "https://APP.afterthebars.faith",   // your app address
+  waitlistEmail:     "sam@livewireintel.com",       // where waitlist signups get emailed
+  videosEndpoint:    "/api/videos",                  // your Worker route
+  maxVideos:         12,
+
+  schedule: [
+    { when: "Weekday mornings", title: "Morning Mayhem", note: "Live. Recovery, news, and commentary." },
+    { when: "Weekly",           title: "True crime investigation", note: "New case, new episode." },
+    { when: "After dark",       title: "After Dark", note: "Late-night, no filter." }
+  ],
+
+  milestones: [30, 90, 180, 365, 730, 1825]
 };
-/* ============================================ */
 
-var SAMPLE_VIDEOS = [
-  {id:"",title:"Newest Episode Title Goes Here",date:"Auto-filled from YouTube",thumb:""},
-  {id:"",title:"Recovery Story: Raw & Unfiltered",date:"Auto-filled from YouTube",thumb:""},
-  {id:"",title:"Montana True Crime: The File Opens",date:"Auto-filled from YouTube",thumb:""},
-  {id:"",title:"Tattoo Chair Confessions",date:"Auto-filled from YouTube",thumb:""}
-];
-var SAMPLE_UPCOMING = [
-  {title:"Morning Mayhem: Live",desc:"Weekly live show",start:nextDay(1,9)},
-  {title:"After Dark: True Crime Premiere",desc:"Premiere with live chat",start:nextDay(5,20)}
-];
+/* ---------- Links ---------- */
+["yt-link"].forEach(id => document.getElementById(id).href = CONFIG.youtubeChannelUrl);
+["patreon-link", "patreon-link-2"].forEach(id => document.getElementById(id).href = CONFIG.patreonUrl);
+["app-link", "app-link-2"].forEach(id => document.getElementById(id).href = CONFIG.appUrl);
 
-function nextDay(dow,hour){
-  var d=new Date();d.setHours(hour,0,0,0);
-  var diff=(dow-d.getDay()+7)%7; if(diff===0&&d<new Date())diff=7;
-  d.setDate(d.getDate()+diff);return d.toISOString();
-}
-function esc(s){var d=document.createElement("div");d.textContent=s==null?"":s;return d.innerHTML}
-function thumbHTML(v){
-  var inner=v.thumb?'<img loading="lazy" src="'+esc(v.thumb)+'" alt="">':'<span class="ph">AFTER THE BARS</span>';
-  return inner+'<span class="play"></span>';
-}
-function link(v){return v.id?"https://www.youtube.com/watch?v="+encodeURIComponent(v.id):CONFIG.channelHandle}
-
-function renderVideos(list,live){
-  var f=list[0],rest=list.slice(1,7);
-  document.getElementById("featured").innerHTML=
-    '<a class="thumb" id="ftThumb" href="'+link(f)+'" target="_blank" rel="noopener">'+thumbHTML(f)+'</a>'+
-    '<div class="info"><span class="badge">Newest</span><h3>'+esc(f.title)+'</h3><div class="meta">'+esc(f.date)+'</div>'+
-    '<div style="margin-top:18px"><a class="btn" href="'+link(f)+'" target="_blank" rel="noopener">Watch Now</a></div></div>';
-  document.getElementById("videoGrid").innerHTML=rest.map(function(v){
-    return '<a class="card" href="'+link(v)+'" target="_blank" rel="noopener"><div class="thumb">'+thumbHTML(v)+'</div>'+
-      '<div class="info"><h3>'+esc(v.title)+'</h3><div class="meta">'+esc(v.date)+'</div></div></a>';
-  }).join("");
-  document.getElementById("feedStatus").textContent=live?"● Synced with YouTube":"Preview mode — connect YouTube feed";
-  if(live){
-    var t=document.getElementById("ftThumb");
-    if(f.id){t.addEventListener("click",function(e){
-      e.preventDefault();
-      t.outerHTML='<iframe class="player" style="display:block" src="https://www.youtube.com/embed/'+encodeURIComponent(f.id)+'?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-    })}
-  }
-}
-
-function renderSchedule(list){
-  var el=document.getElementById("sched");
-  if(!list.length){el.innerHTML='<div class="row"><div><h3>Nothing scheduled yet</h3><p>Check back soon.</p></div></div>';return}
-  el.innerHTML=list.map(function(u){
-    var d=new Date(u.start);
-    var mon=d.toLocaleString(undefined,{month:"short"}).toUpperCase();
-    var when=d.toLocaleString(undefined,{weekday:"short",hour:"numeric",minute:"2-digit"});
-    return '<div class="row"><div class="date"><b>'+d.getDate()+'</b><span>'+mon+'</span></div>'+
-      '<div><h3>'+esc(u.title)+'</h3><p>'+esc(u.desc||"")+'</p></div>'+
-      '<div class="when">'+esc(when)+'</div></div>';
-  }).join("");
-}
-
-/* Try the live feed; fall back to preview content */
-function loadFeed(){
-  fetch(CONFIG.feedEndpoint).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(data){
-    renderVideos(data.videos&&data.videos.length?data.videos:SAMPLE_VIDEOS,!!(data.videos&&data.videos.length));
-    renderSchedule(data.upcoming||[]);
-  }).catch(function(){
-    renderVideos(SAMPLE_VIDEOS,false);renderSchedule(SAMPLE_UPCOMING);
+/* ---------- Schedule ---------- */
+(function () {
+  const ul = document.getElementById("schedule-list");
+  CONFIG.schedule.forEach(item => {
+    const li = document.createElement("li");
+    li.innerHTML = '<div class="when"></div><div class="what"><strong></strong><span></span></div>';
+    li.querySelector(".when").textContent = item.when;
+    li.querySelector("strong").textContent = item.title;
+    li.querySelector("span").textContent = item.note || "";
+    ul.appendChild(li);
   });
-}
-loadFeed();
+})();
 
-/* ===== Sobriety counter ===== */
-var MILES=[30,90,180,365,730,1825];
-var LABELS={30:"30 DAYS",90:"90 DAYS",180:"6 MONTHS",365:"1 YEAR",730:"2 YEARS",1825:"5 YEARS"};
-var mem={};
-function sGet(k){try{return localStorage.getItem(k)}catch(e){return mem[k]||null}}
-function sSet(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}
-function days(iso){
-  var p=iso.split("-"),s=new Date(+p[0],+p[1]-1,+p[2]),n=new Date();
-  n=new Date(n.getFullYear(),n.getMonth(),n.getDate());
-  return Math.max(0,Math.round((n-s)/86400000));
-}
-function renderCounter(){
-  var iso=sGet("atb_sobdate"),d=iso?days(iso):0;
-  document.getElementById("dayNum").textContent=iso?d.toLocaleString():"0";
-  document.getElementById("miles").innerHTML=MILES.map(function(m){
-    return '<div class="mile'+(iso&&d>=m?' on':'')+'"><b>'+LABELS[m]+'</b></div>';
-  }).join("");
-  var nx=MILES.filter(function(m){return m>d})[0],prev=0;
-  MILES.forEach(function(m){if(m<=d)prev=m});
-  var pct=100,msg="";
-  if(!iso){pct=0;msg="Set your date to start counting."}
-  else if(nx){pct=Math.round((d-prev)/(nx-prev)*100);msg=(nx-d)+" days until "+LABELS[nx]+". Keep going."}
-  else msg="Every milestone unlocked. Be somebody's proof it works.";
-  document.getElementById("barFill").style.width=pct+"%";
-  document.getElementById("nextMile").textContent=msg;
-}
-var inp=document.getElementById("sobDate");
-if(sGet("atb_sobdate"))inp.value=sGet("atb_sobdate");
-inp.max=new Date().toISOString().slice(0,10);
-inp.addEventListener("change",function(){if(inp.value){sSet("atb_sobdate",inp.value);renderCounter()}});
-renderCounter();
+/* ---------- Videos ---------- */
+(async function () {
+  const grid = document.getElementById("videos");
+  const status = document.getElementById("video-status");
+  const channelLink = '<a href="' + CONFIG.youtubeChannelUrl + '" target="_blank" rel="noopener">Watch on YouTube</a>';
 
-/* ===== Merch email (wire to Supabase/Formspree later) ===== */
-document.getElementById("mailBtn").addEventListener("click",function(){
-  var v=document.getElementById("mailIn").value.trim(),m=document.getElementById("mailMsg");
-  if(!/^\S+@\S+\.\S+$/.test(v)){m.textContent="Enter a valid email.";return}
-  m.textContent="You're on the list. (Connect this form to your email tool before launch.)";
+  try {
+    const res = await fetch(CONFIG.videosEndpoint);
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+
+    // Accepts an array, or { videos: [...] }, or { items: [...] }
+    const list = Array.isArray(data) ? data : (data.videos || data.items || []);
+    if (!list.length) throw new Error("empty");
+
+    list.slice(0, CONFIG.maxVideos).forEach(v => {
+      const id = v.id?.videoId || v.videoId || v.id || v.snippet?.resourceId?.videoId;
+      const title = v.title || v.snippet?.title || "Untitled";
+      const published = v.publishedAt || v.snippet?.publishedAt || v.date;
+      const thumb = v.thumbnail || v.thumbnailUrl || v.snippet?.thumbnails?.high?.url
+                    || v.snippet?.thumbnails?.medium?.url
+                    || (id ? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg" : "");
+      const url = v.url || v.link || (id ? "https://www.youtube.com/watch?v=" + id : CONFIG.youtubeChannelUrl);
+
+      const el = document.createElement("article");
+      el.className = "video";
+      el.innerHTML = '<a target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" alt=""></div>' +
+                     '<p class="vtitle"></p><span class="vdate"></span></a>';
+      el.querySelector("a").href = url;
+      el.querySelector("img").src = thumb;
+      el.querySelector(".vtitle").textContent = title;
+      if (published) {
+        const d = new Date(published);
+        if (!isNaN(d)) el.querySelector(".vdate").textContent =
+          d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+      }
+      grid.appendChild(el);
+    });
+    status.remove();
+  } catch (err) {
+    status.innerHTML = "Videos aren't loading right now. " + channelLink + " to see the latest.";
+  }
+})();
+
+/* ---------- Sobriety counter (saved in this browser only) ---------- */
+(function () {
+  const KEY = "atb_sober_date";
+  const input = document.getElementById("sober-date");
+  const count = document.getElementById("day-count");
+  const msg = document.getElementById("counter-msg");
+  const rail = document.getElementById("rail");
+
+  function label(n) {
+    if (n >= 365 && n % 365 === 0) return (n / 365) + (n === 365 ? " year" : " years");
+    return n + " days";
+  }
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function write(v) { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch (e) {} }
+
+  function daysSince(iso) {
+    const [y, m, d] = iso.split("-").map(Number);
+    const start = new Date(y, m - 1, d);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    return Math.max(0, Math.round((today - start) / 86400000));
+  }
+
+  function render() {
+    const saved = read();
+    const days = saved ? daysSince(saved) : 0;
+    count.textContent = days.toLocaleString();
+
+    if (!saved) msg.textContent = "Pick your sobriety date to start counting.";
+    else if (days === 0) msg.textContent = "Day one. You showed up, and that's the whole job today.";
+    else msg.textContent = "One day at a time. Keep going.";
+
+    rail.innerHTML = "";
+    CONFIG.milestones.forEach(m => {
+      const done = saved && days >= m;
+      const li = document.createElement("li");
+      if (done) li.className = "done";
+      li.innerHTML = '<div class="mark"></div><div class="state"></div>';
+      li.querySelector(".mark").textContent = label(m);
+      li.querySelector(".state").textContent = done
+        ? "tattoo flash design"
+        : (saved ? (m - days) + " days to go" : "Locked");
+      rail.appendChild(li);
+    });
+  }
+
+  const saved = read();
+  if (saved) input.value = saved;
+  input.max = new Date().toISOString().slice(0, 10);
+
+  document.getElementById("save-date").addEventListener("click", () => {
+    if (!input.value) { msg.textContent = "Choose a date first, then press Save date."; return; }
+    write(input.value); render();
+  });
+  document.getElementById("clear-date").addEventListener("click", () => {
+    write(""); input.value = ""; render();
+  });
+
+  render();
+})();
+
+/* ---------- Merch waitlist (opens an email to you) ---------- */
+document.getElementById("waitlist").addEventListener("submit", e => {
+  e.preventDefault();
+  const email = document.getElementById("wl-email").value.trim();
+  if (!email) return;
+  const subject = encodeURIComponent("Merch waitlist");
+  const body = encodeURIComponent("Add me to the merch waitlist: " + email);
+  window.location.href = "mailto:" + CONFIG.waitlistEmail + "?subject=" + subject + "&body=" + body;
+  document.getElementById("wl-msg").textContent = "Your email app should open. Press send to finish joining the waitlist.";
 });
 </script>
 </body>
