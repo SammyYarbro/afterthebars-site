@@ -1,503 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>After the Bars: The Morning Mayhem Show</title>
-<meta name="description" content="Recovery, true crime, tattoos and faith. Watch the show, track your sober days, and join the community.">
-<meta name="theme-color" content="#050505">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-  /* ============================================================
-     EDIT THESE: links, schedule, and contact in the CONFIG block
-     at the bottom of the page (search for "CONFIG").
-     ============================================================ */
-
-  :root {
-    --black: #050505;
-    --coal: #121010;
-    --line: #2b2626;
-    --blood: #c8102e;
-    --blood-hot: #e5334b;
-    --bone: #ece6da;
-    --ash: #aaa299;
-
-    --display: 'Pirata One', 'Georgia', serif;
-    --body: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { animation: none !important; transition: none !important; }
-  }
-
-  body {
-    margin: 0;
-    background: var(--black);
-    color: var(--bone);
-    font-family: var(--body);
-    font-weight: 400;
-    font-size: 1.0625rem;      /* 17px */
-    line-height: 1.65;
-    letter-spacing: 0.01em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  p { margin: 0 0 1em; max-width: 62ch; }
-
-  :focus-visible {
-    outline: 3px solid var(--bone);
-    outline-offset: 3px;
-  }
-
-  .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
-
-  /* ---------- Headings ---------- */
-  h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; margin: 0 0 .5em; }
-  h2 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
-  h3 { font-size: 1.7rem; }
-
-  /* ---------- Spike divider (the one loud element) ---------- */
-  .spikes {
-    height: 22px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='22' viewBox='0 0 28 22'%3E%3Cpath d='M0 0 L14 22 L28 0 Z' fill='%23c8102e'/%3E%3C/svg%3E");
-    background-repeat: repeat-x;
-    background-position: center top;
-  }
-
-  /* ---------- Header ---------- */
-  .site-header {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(5,5,5,.94);
-    border-bottom: 1px solid var(--line);
-  }
-  .site-header .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 1rem; padding-block: .7rem;
-  }
-  .brand { font-family: var(--display); font-size: 1.6rem; text-decoration: none; letter-spacing: .02em; }
-  nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
-  nav a { text-decoration: none; font-weight: 500; color: var(--ash); padding: .3rem 0; border-bottom: 2px solid transparent; }
-  nav a:hover { color: var(--bone); border-color: var(--blood); }
-
-  /* ---------- Hero ---------- */
-  .hero { padding: clamp(3rem, 9vw, 6.5rem) 0 clamp(3rem, 7vw, 5rem); }
-  .hero h1 {
-    font-size: clamp(3.6rem, 13vw, 9.5rem);
-    letter-spacing: .01em;
-    margin-bottom: .1em;
-    animation: rise .9s ease-out both;
-  }
-  .hero h1 span { display: block; color: var(--blood); font-size: .5em; letter-spacing: .06em; }
-  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-  .hero .lede { font-size: 1.25rem; color: var(--bone); max-width: 46ch; margin-bottom: 1.8rem; }
-  .hero .lede em { color: var(--ash); font-style: normal; }
-
-  /* ---------- Buttons ---------- */
-  .btn {
-    display: inline-block; text-decoration: none; cursor: pointer;
-    font-family: var(--body); font-weight: 600; font-size: 1rem;
-    padding: .8rem 1.4rem; border: 2px solid var(--blood);
-    background: var(--blood); color: #fff; border-radius: 2px;
-    transition: background .15s, border-color .15s;
-  }
-  .btn:hover { background: var(--blood-hot); border-color: var(--blood-hot); }
-  .btn.ghost { background: transparent; color: var(--bone); border-color: var(--bone); }
-  .btn.ghost:hover { background: var(--bone); color: var(--black); }
-  .btn-row { display: flex; flex-wrap: wrap; gap: .8rem; }
-
-  /* ---------- Sections ---------- */
-  section { padding: clamp(3rem, 7vw, 5rem) 0; }
-  section.alt { background: var(--coal); border-block: 1px solid var(--line); }
-  .section-intro { color: var(--ash); margin-bottom: 2rem; }
-
-  /* ---------- Videos ---------- */
-  .video-grid {
-    display: grid; gap: 1.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  }
-  .video a { text-decoration: none; display: block; }
-  .thumb {
-    aspect-ratio: 16 / 9; background: var(--line); overflow: hidden;
-    border: 1px solid var(--line);
-  }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .25s; }
-  .video a:hover .thumb img { transform: scale(1.03); }
-  .video a:hover .vtitle { color: var(--blood-hot); }
-  .vtitle { font-weight: 600; margin: .7rem 0 .1rem; line-height: 1.35; }
-  .vdate { color: var(--ash); font-size: .92rem; }
-  .status { color: var(--ash); padding: 1rem 0; }
-  .status a { color: var(--bone); }
-
-  /* ---------- Schedule ---------- */
-  .schedule { list-style: none; padding: 0; margin: 0; max-width: 720px; }
-  .schedule li {
-    display: grid; grid-template-columns: 9rem 1fr; gap: 1rem;
-    padding: 1rem 0; border-bottom: 1px solid var(--line);
-  }
-  .schedule .when { font-weight: 600; color: var(--blood-hot); }
-  .schedule .what strong { font-weight: 600; display: block; }
-  .schedule .what span { color: var(--ash); }
-  @media (max-width: 520px) { .schedule li { grid-template-columns: 1fr; gap: .2rem; } }
-
-  /* ---------- Sobriety counter ---------- */
-  .counter-box {
-    border: 2px solid var(--blood); padding: clamp(1.4rem, 4vw, 2.4rem);
-    max-width: 760px; background: var(--black);
-  }
-  .days { font-family: var(--display); font-size: clamp(5rem, 18vw, 9rem); line-height: .9; color: var(--bone); }
-  .days small { font-family: var(--body); font-size: 1.1rem; color: var(--ash); letter-spacing: .02em; margin-left: .5rem; }
-  .counter-msg { margin: .8rem 0 1.4rem; color: var(--bone); }
-  .date-row { display: flex; flex-wrap: wrap; gap: .7rem; align-items: end; }
-  label { display: block; font-weight: 500; color: var(--ash); margin-bottom: .3rem; font-size: .95rem; }
-  input[type="date"], input[type="email"] {
-    font: inherit; font-size: 1rem; color: var(--bone);
-    background: var(--coal); border: 1px solid #4a4242; padding: .7rem .8rem;
-    border-radius: 2px; min-width: 14rem; color-scheme: dark;
-  }
-  .reset { background: none; border: 0; color: var(--ash); font: inherit; text-decoration: underline; cursor: pointer; padding: .7rem .2rem; }
-  .reset:hover { color: var(--bone); }
-
-  .rail { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: .6rem;
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); max-width: 760px; }
-  .rail li {
-    border: 1px solid var(--line); padding: .8rem 1rem; background: var(--black);
-  }
-  .rail .mark { font-family: var(--display); font-size: 1.8rem; line-height: 1; }
-  .rail .state { font-size: .92rem; color: var(--ash); }
-  .rail li.done { border-color: var(--blood); }
-  .rail li.done .state { color: var(--bone); }
-  .rail li.done .state::before { content: "Unlocked: "; color: var(--blood-hot); font-weight: 600; }
-  .note { color: var(--ash); font-size: .95rem; margin-top: 1rem; }
-
-  /* ---------- Membership ---------- */
-  .tiers { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-  .tier { border: 1px solid var(--line); padding: 1.6rem; background: var(--coal); display: flex; flex-direction: column; }
-  section.alt .tier { background: var(--black); }
-  .tier.featured { border: 2px solid var(--blood); }
-  .tier .price { color: var(--blood-hot); font-weight: 600; margin-bottom: 1rem; }
-  .tier ul { margin: 0 0 1.5rem; padding-left: 1.1rem; flex: 1; }
-  .tier li { margin-bottom: .45rem; }
-  .tier .btn { align-self: flex-start; }
-
-  /* ---------- Merch waitlist ---------- */
-  .waitlist { display: flex; flex-wrap: wrap; gap: .8rem; align-items: end; }
-
-  /* ---------- Footer ---------- */
-  footer { padding: 2.5rem 0 3rem; color: var(--ash); font-size: .95rem; }
-  footer p { max-width: 70ch; }
-  footer a { color: var(--bone); }
-  .links { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 1.4rem; }
-
-  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05070b" />
+  <title>After the Bars | Video Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="scanline"></div>
 
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="#top">After the Bars</a>
-    <nav aria-label="Main">
-      <a href="#watch">Watch</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#counter">Sober days</a>
-      <a href="#join">Join</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="After the Bars home">
+      <div class="brand-mark">ATB</div>
+      <div>
+        <div class="brand-title">AFTER THE BARS</div>
+        <div class="brand-sub">LEGAL LIVEWIRE VIDEO ARCHIVE</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="#cases">Cases</a>
+      <a href="#recovery">Recovery</a>
+      <a href="#faith">Faith</a>
+      <a href="#story">My Story</a>
     </nav>
-  </div>
-</header>
 
-<main id="top">
+    <button id="menuButton" class="menu-button" aria-label="Open menu">☰</button>
+  </header>
 
-  <div class="hero">
-    <div class="wrap">
-      <h1>After the Bars<span>The Morning Mayhem Show</span></h1>
-      <p class="lede">Recovery, true crime, tattoos and faith. Raw, honest, and a little loud. <em>Straight from Billings, Montana.</em></p>
-      <div class="btn-row">
-        <a class="btn" href="#watch">Watch the latest</a>
-        <a class="btn ghost" href="#counter">Start your sober-day counter</a>
-      </div>
-    </div>
-  </div>
-  <div class="spikes" aria-hidden="true"></div>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="hero-copy">
+        <div class="eyebrow">THE ARCHIVE // CASES • RECOVERY • FAITH • LIFE</div>
+        <h1>EVERY STORY.<br><span>ALL IN ONE PLACE.</span></h1>
+        <p>
+          The official After the Bars library. Browse major cases, courtroom breakdowns,
+          recovery stories, faith-centered videos, personal history, interviews, and special reports.
+        </p>
 
-  <!-- WATCH -->
-  <section id="watch">
-    <div class="wrap">
-      <h2>Latest episodes</h2>
-      <p class="section-intro">New videos show up here on their own when they go live on YouTube.</p>
-      <div id="videos" class="video-grid" aria-live="polite"></div>
-      <p id="video-status" class="status">Loading videos...</p>
-    </div>
-  </section>
+        <div class="hero-actions">
+          <button class="primary-button" data-featured="true">
+            <span class="play-icon">▶</span> WATCH FEATURED
+          </button>
+          <a class="secondary-button" href="#cases">BROWSE LIBRARY</a>
+        </div>
 
-  <!-- SCHEDULE -->
-  <section id="schedule" class="alt">
-    <div class="wrap">
-      <h2>Upcoming</h2>
-      <p class="section-intro">Times are Mountain Time.</p>
-      <ul id="schedule-list" class="schedule"></ul>
-    </div>
-  </section>
-
-  <!-- COUNTER -->
-  <section id="counter">
-    <div class="wrap">
-      <h2>Count your days</h2>
-      <p class="section-intro">Free, private, and it stays free. Your date is saved only in this browser.</p>
-
-      <div class="counter-box">
-        <div class="days"><span id="day-count">0</span><small>days sober</small></div>
-        <p id="counter-msg" class="counter-msg">Pick your sobriety date to start counting.</p>
-        <div class="date-row">
-          <div>
-            <label for="sober-date">Sobriety date</label>
-            <input type="date" id="sober-date">
-          </div>
-          <button class="btn" id="save-date" type="button">Save date</button>
-          <button class="reset" id="clear-date" type="button">Clear</button>
+        <div class="hero-meta">
+          <span>⚡ NEWEST UPLOADS</span>
+          <span>⚖ CASE ARCHIVES</span>
+          <span>✝ FAITH & RECOVERY</span>
         </div>
       </div>
 
-      <ul class="rail" id="rail" aria-label="Milestones"></ul>
-      <p class="note">Each milestone unlocks a tattoo flash design drawn by Sam. Download them in the <a href="#join">After the Bars app</a>.</p>
-    </div>
-  </section>
-
-  <!-- JOIN -->
-  <section id="join" class="alt">
-    <div class="wrap">
-      <h2>Ways to join</h2>
-      <p class="section-intro">The counter and the show are free. Everything else is optional support.</p>
-
-      <div class="tiers">
-        <article class="tier">
-          <h3>Free</h3>
-          <div class="price">$0</div>
-          <ul>
-            <li>Every public episode</li>
-            <li>Sober-day counter and milestones</li>
-            <li>Show schedule</li>
-          </ul>
-          <a class="btn ghost" href="#watch">Start watching</a>
-        </article>
-
-        <article class="tier featured">
-          <h3>Patreon</h3>
-          <div class="price">Support the show</div>
-          <ul>
-            <li>Members-only posts and early looks</li>
-            <li>Montana file room: true crime case documents (coming)</li>
-            <li>Helps keep the show independent</li>
-          </ul>
-          <a class="btn" id="patreon-link" href="#" target="_blank" rel="noopener">Join on Patreon</a>
-        </article>
-
-        <article class="tier">
-          <h3>The app</h3>
-          <div class="price">Free</div>
-          <ul>
-            <li>Install it on your phone's home screen</li>
-            <li>Alerts when the show goes live</li>
-            <li>Tattoo flash downloads at each milestone</li>
-          </ul>
-          <a class="btn ghost" id="app-link" href="#" target="_blank" rel="noopener">Get the app</a>
-        </article>
+      <div class="hero-art">
+        <div class="bars"></div>
+        <div class="hero-card">
+          <div class="hero-card-kicker">FEATURED COLLECTION</div>
+          <div class="hero-card-title">THE CASE FILES</div>
+          <div class="hero-card-copy">Deep dives, reactions, timelines, livestreams, and courtroom moments.</div>
+          <button class="mini-play" data-featured="true">▶ PLAY</button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- MERCH -->
-  <section id="merch">
-    <div class="wrap">
-      <h2>Merch is coming</h2>
-      <p class="section-intro">Leave your email and you'll hear first when it drops. No spam.</p>
-      <form id="waitlist" class="waitlist">
+    <section class="library-toolbar">
+      <div class="search-wrap">
+        <span>⌕</span>
+        <input id="searchInput" type="search" placeholder="Search cases, names, topics, recovery, faith..." />
+      </div>
+      <div class="filter-row" id="filters">
+        <button class="filter active" data-filter="all">ALL</button>
+        <button class="filter" data-filter="case">CASE FILES</button>
+        <button class="filter" data-filter="recovery">RECOVERY</button>
+        <button class="filter" data-filter="faith">FAITH</button>
+        <button class="filter" data-filter="story">MY STORY</button>
+        <button class="filter" data-filter="interview">INTERVIEWS</button>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="section-heading">
         <div>
-          <label for="wl-email">Email address</label>
-          <input type="email" id="wl-email" name="email" autocomplete="email" required placeholder="you@example.com">
+          <div class="section-kicker">COURTROOM ARCHIVE</div>
+          <h2>CASE FILES</h2>
         </div>
-        <button class="btn" type="submit">Join the waitlist</button>
-      </form>
-      <p id="wl-msg" class="note" role="status"></p>
-    </div>
-  </section>
+        <button class="text-button" data-filter-jump="case">VIEW ALL CASE VIDEOS →</button>
+      </div>
 
-</main>
+      <div class="collection-grid">
+        <article class="collection-card read">
+          <div class="collection-label">CASE COLLECTION</div>
+          <h3>KAREN READ</h3>
+          <p>Trial coverage, testimony, reactions, timelines, and key courtroom moments.</p>
+          <button class="collection-open" data-query="karen read">OPEN COLLECTION →</button>
+        </article>
 
-<div class="spikes" aria-hidden="true"></div>
-<footer>
-  <div class="wrap">
-    <div class="links">
-      <a id="yt-link" href="#" target="_blank" rel="noopener">YouTube channel</a>
-      <a id="patreon-link-2" href="#" target="_blank" rel="noopener">Patreon</a>
-      <a id="app-link-2" href="#" target="_blank" rel="noopener">App</a>
+        <article class="collection-card anthony">
+          <div class="collection-label">CASE COLLECTION</div>
+          <h3>KARMELO ANTHONY</h3>
+          <p>Breaking developments, legal analysis, hearings, commentary, and case updates.</p>
+          <button class="collection-open" data-query="karmelo anthony">OPEN COLLECTION →</button>
+        </article>
+
+        <article class="collection-card generic">
+          <div class="collection-label">EXPANDABLE</div>
+          <h3>MORE CASES</h3>
+          <p>Add any case as its own dedicated shelf with artwork, timeline, and playlists.</p>
+          <button class="collection-open" data-query="case">BROWSE CASES →</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section compact" id="latest">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">LATEST FROM AFTER THE BARS</div>
+          <h2>RECENT VIDEOS</h2>
+        </div>
+      </div>
+      <div class="video-grid" id="videoGrid"></div>
+      <div id="emptyState" class="empty-state" hidden>
+        No videos matched that search. Try another name, case, or topic.
+      </div>
+    </section>
+
+    <section class="feature-band" id="recovery">
+      <div class="feature-copy">
+        <div class="section-kicker">LIFE AFTER THE CHAOS</div>
+        <h2>RECOVERY</h2>
+        <p>
+          Honest conversations about addiction, consequences, second chances, sober living,
+          rebuilding a life, and the people who helped make it possible.
+        </p>
+        <button class="primary-button filter-link" data-filter="recovery">EXPLORE RECOVERY VIDEOS</button>
+      </div>
+      <div class="feature-number">01</div>
+    </section>
+
+    <section class="feature-band alt" id="faith">
+      <div class="feature-copy">
+        <div class="section-kicker">WHAT HOLDS YOU UP WHEN LIFE HITS HARD</div>
+        <h2>FAITH</h2>
+        <p>
+          Testimony, spiritual reflections, redemption, purpose, and the role faith has played
+          in recovery, family, and rebuilding from the ground up.
+        </p>
+        <button class="primary-button filter-link" data-filter="faith">EXPLORE FAITH VIDEOS</button>
+      </div>
+      <div class="feature-number">02</div>
+    </section>
+
+    <section class="feature-band" id="story">
+      <div class="feature-copy">
+        <div class="section-kicker">THE STORY BEHIND THE CAMERA</div>
+        <h2>MY STORY</h2>
+        <p>
+          Personal history, prison, tattooing, family, mistakes, turning points, and the road
+          that eventually became After the Bars.
+        </p>
+        <button class="primary-button filter-link" data-filter="story">EXPLORE MY STORY</button>
+      </div>
+      <div class="feature-number">03</div>
+    </section>
+
+    <section class="quote-strip">
+      <div class="quote-big">“AFTER THE BARS ISN’T JUST ABOUT COURT CASES. IT’S ABOUT WHAT HAPPENS BEFORE, DURING, AND AFTER THE MOMENT THAT CHANGES A LIFE.”</div>
+      <div class="quote-signature">— AFTER THE BARS</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">AFTER THE BARS</div>
+    <p>Legal commentary • Court coverage • Recovery • Faith • Real life</p>
+    <div class="footer-links">
+      <a href="#top">Home</a>
+      <a href="#cases">Cases</a>
+      <a href="#recovery">Recovery</a>
+      <a href="#faith">Faith</a>
+      <a href="#story">My Story</a>
     </div>
-    <p>If you or someone you love is struggling with substance use, the SAMHSA National Helpline is free, confidential, and open 24/7 at 1-800-662-4357.</p>
-    <p>After the Bars: The Morning Mayhem Show. Billings, Montana.</p>
+    <div class="copyright">© 2026 After the Bars. Prototype design.</div>
+  </footer>
+
+  <div class="player-modal" id="playerModal" aria-hidden="true">
+    <div class="player-backdrop" data-close-player="true"></div>
+    <div class="player-shell">
+      <div class="player-top">
+        <div>
+          <div class="player-kicker">NOW PLAYING</div>
+          <div id="playerTitle" class="player-title">After the Bars</div>
+        </div>
+        <button class="player-close" data-close-player="true">✕</button>
+      </div>
+
+      <div class="video-stage" id="videoStage">
+        <div class="stage-poster">
+          <div class="stage-logo">ATB</div>
+          <button id="bigPlay" class="big-play" aria-label="Play video">▶</button>
+        </div>
+        <div id="youtubeMount"></div>
+      </div>
+
+      <div class="custom-controls">
+        <button id="playPause" class="control-main">▶</button>
+        <button id="rewindBtn" class="control">↶ 10</button>
+        <button id="forwardBtn" class="control">10 ↷</button>
+        <div class="progress-shell"><div id="progressFill" class="progress-fill"></div></div>
+        <div id="timeDisplay" class="time-display">0:00 / 0:00</div>
+        <button id="muteBtn" class="control">🔊</button>
+        <button id="fullscreenBtn" class="control">⛶</button>
+      </div>
+
+      <div class="player-info">
+        <span class="player-badge">AFTER THE BARS EXCLUSIVE</span>
+        <p id="playerDescription">Custom player shell for the After the Bars archive.</p>
+      </div>
+    </div>
   </div>
-</footer>
 
-<script>
-/* ============================================================
-   CONFIG: change these and nothing else needs touching
-   ============================================================ */
-const CONFIG = {
-  youtubeChannelUrl: "https://www.youtube.com/@AfterTheBars",     // your channel link
-  patreonUrl:        "https://www.patreon.com/",     // your Patreon page
-  appUrl:            "https://APP.afterthebars.faith",   // your app address
-  waitlistEmail:     "sam@livewireintel.com",       // where waitlist signups get emailed
-  videosEndpoint:    "/api/videos",                  // your Worker route
-  maxVideos:         12,
-
-  schedule: [
-    { when: "Weekday mornings", title: "Morning Mayhem", note: "Live. Recovery, news, and commentary." },
-    { when: "Weekly",           title: "True crime investigation", note: "New case, new episode." },
-    { when: "After dark",       title: "After Dark", note: "Late-night, no filter." }
-  ],
-
-  milestones: [30, 90, 180, 365, 730, 1825]
-};
-
-/* ---------- Links ---------- */
-["yt-link"].forEach(id => document.getElementById(id).href = CONFIG.youtubeChannelUrl);
-["patreon-link", "patreon-link-2"].forEach(id => document.getElementById(id).href = CONFIG.patreonUrl);
-["app-link", "app-link-2"].forEach(id => document.getElementById(id).href = CONFIG.appUrl);
-
-/* ---------- Schedule ---------- */
-(function () {
-  const ul = document.getElementById("schedule-list");
-  CONFIG.schedule.forEach(item => {
-    const li = document.createElement("li");
-    li.innerHTML = '<div class="when"></div><div class="what"><strong></strong><span></span></div>';
-    li.querySelector(".when").textContent = item.when;
-    li.querySelector("strong").textContent = item.title;
-    li.querySelector("span").textContent = item.note || "";
-    ul.appendChild(li);
-  });
-})();
-
-/* ---------- Videos ---------- */
-(async function () {
-  const grid = document.getElementById("videos");
-  const status = document.getElementById("video-status");
-  const channelLink = '<a href="' + CONFIG.youtubeChannelUrl + '" target="_blank" rel="noopener">Watch on YouTube</a>';
-
-  try {
-    const res = await fetch(CONFIG.videosEndpoint);
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    const data = await res.json();
-
-    // Accepts an array, or { videos: [...] }, or { items: [...] }
-    const list = Array.isArray(data) ? data : (data.videos || data.items || []);
-    if (!list.length) throw new Error("empty");
-
-    list.slice(0, CONFIG.maxVideos).forEach(v => {
-      const id = v.id?.videoId || v.videoId || v.id || v.snippet?.resourceId?.videoId;
-      const title = v.title || v.snippet?.title || "Untitled";
-      const published = v.publishedAt || v.snippet?.publishedAt || v.date;
-      const thumb = v.thumbnail || v.thumbnailUrl || v.snippet?.thumbnails?.high?.url
-                    || v.snippet?.thumbnails?.medium?.url
-                    || (id ? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg" : "");
-      const url = v.url || v.link || (id ? "https://www.youtube.com/watch?v=" + id : CONFIG.youtubeChannelUrl);
-
-      const el = document.createElement("article");
-      el.className = "video";
-      el.innerHTML = '<a target="_blank" rel="noopener"><div class="thumb"><img loading="lazy" alt=""></div>' +
-                     '<p class="vtitle"></p><span class="vdate"></span></a>';
-      el.querySelector("a").href = url;
-      el.querySelector("img").src = thumb;
-      el.querySelector(".vtitle").textContent = title;
-      if (published) {
-        const d = new Date(published);
-        if (!isNaN(d)) el.querySelector(".vdate").textContent =
-          d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
-      }
-      grid.appendChild(el);
-    });
-    status.remove();
-  } catch (err) {
-    status.innerHTML = "Videos aren't loading right now. " + channelLink + " to see the latest.";
-  }
-})();
-
-/* ---------- Sobriety counter (saved in this browser only) ---------- */
-(function () {
-  const KEY = "atb_sober_date";
-  const input = document.getElementById("sober-date");
-  const count = document.getElementById("day-count");
-  const msg = document.getElementById("counter-msg");
-  const rail = document.getElementById("rail");
-
-  function label(n) {
-    if (n >= 365 && n % 365 === 0) return (n / 365) + (n === 365 ? " year" : " years");
-    return n + " days";
-  }
-
-  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
-  function write(v) { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch (e) {} }
-
-  function daysSince(iso) {
-    const [y, m, d] = iso.split("-").map(Number);
-    const start = new Date(y, m - 1, d);
-    const today = new Date(); today.setHours(0, 0, 0, 0);
-    return Math.max(0, Math.round((today - start) / 86400000));
-  }
-
-  function render() {
-    const saved = read();
-    const days = saved ? daysSince(saved) : 0;
-    count.textContent = days.toLocaleString();
-
-    if (!saved) msg.textContent = "Pick your sobriety date to start counting.";
-    else if (days === 0) msg.textContent = "Day one. You showed up, and that's the whole job today.";
-    else msg.textContent = "One day at a time. Keep going.";
-
-    rail.innerHTML = "";
-    CONFIG.milestones.forEach(m => {
-      const done = saved && days >= m;
-      const li = document.createElement("li");
-      if (done) li.className = "done";
-      li.innerHTML = '<div class="mark"></div><div class="state"></div>';
-      li.querySelector(".mark").textContent = label(m);
-      li.querySelector(".state").textContent = done
-        ? "tattoo flash design"
-        : (saved ? (m - days) + " days to go" : "Locked");
-      rail.appendChild(li);
-    });
-  }
-
-  const saved = read();
-  if (saved) input.value = saved;
-  input.max = new Date().toISOString().slice(0, 10);
-
-  document.getElementById("save-date").addEventListener("click", () => {
-    if (!input.value) { msg.textContent = "Choose a date first, then press Save date."; return; }
-    write(input.value); render();
-  });
-  document.getElementById("clear-date").addEventListener("click", () => {
-    write(""); input.value = ""; render();
-  });
-
-  render();
-})();
-
-/* ---------- Merch waitlist (opens an email to you) ---------- */
-document.getElementById("waitlist").addEventListener("submit", e => {
-  e.preventDefault();
-  const email = document.getElementById("wl-email").value.trim();
-  if (!email) return;
-  const subject = encodeURIComponent("Merch waitlist");
-  const body = encodeURIComponent("Add me to the merch waitlist: " + email);
-  window.location.href = "mailto:" + CONFIG.waitlistEmail + "?subject=" + subject + "&body=" + body;
-  document.getElementById("wl-msg").textContent = "Your email app should open. Press send to finish joining the waitlist.";
-});
-</script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="app.js"></script>
 </body>
 </html>
