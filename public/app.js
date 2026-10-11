@@ -7,7 +7,7 @@ const videos = [
     collection: "Featured",
     duration: "38:12",
     date: "Featured",
-    youtubeId: "M7lc1UVf-VE",
+    youtubeId: "8EIqtAzqLI4",
     description: "A featured long-form case breakdown presented inside the custom After the Bars player."
   },
   {
@@ -18,7 +18,7 @@ const videos = [
     collection: "Karen Read",
     duration: "1:12:44",
     date: "Archive",
-    youtubeId: "M7lc1UVf-VE",
+    youtubeId: "qUwEjf4S-1E&t",
     description: "Replace this demo YouTube ID with your actual Karen Read video."
   },
   {
@@ -29,7 +29,7 @@ const videos = [
     collection: "Karen Read",
     duration: "46:18",
     date: "Archive",
-    youtubeId: "M7lc1UVf-VE",
+    youtubeId: "v-sehGqK1Fw",
     description: "A dedicated case shelf lets visitors binge one case without digging through YouTube."
   },
   {
